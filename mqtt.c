@@ -1,17 +1,3 @@
-/*
-
-MQTT client library test driver
-
-TODO:
------
-  change API so that we encode the fixed header first, given some info about each packet.
-  the info about each packet is needed to know how to encode the variable length header.
-  -- think that is fixed now with the uint8_t** approach in encode_msg2
-
-*/
-
-
-
 #include "mqtt.h"
 #include <assert.h>
 #include <stdint.h>
