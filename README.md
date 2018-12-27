@@ -11,7 +11,7 @@ See [mqtt.h](https://github.com/kokke/tiny-MQTT-c/blob/master/mqtt.h) and [mqtt.
 
 Compile and try by running 
 
-> gcc client.c mqtt.c client_main.c -Wall -Wextra
+> gcc client.c mqtt.c client_test.c -Wall -Wextra
 > ./a.out &
 > ./a.out pub
 
