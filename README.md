@@ -16,7 +16,7 @@ Compile and try by running
     > ./a.out &
     > ./a.out pub
 
-.... and sit back and watch the horrors
+.... and sit back and watch the horrors unfold
 
 
 
