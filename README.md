@@ -1,6 +1,6 @@
 # tiny-MQTT-c
 
-A small incomplete and undocumented MQTT 3.1.1 client library written in <500 lines of C99.
+A small incomplete, untested and undocumented MQTT 3.1.1 client library written in <500 lines of C99.
 The library uses no dynamic allocation and compiles down to ~1K on ARM thumb.
 
 NOTE: This is very much a work in progress still. It should be faily easy to hack on though.
