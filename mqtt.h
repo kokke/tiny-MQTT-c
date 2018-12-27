@@ -1,6 +1,6 @@
 #include <stdint.h>
 
-/* Max number of topics once can subscribe to in a single SUBSCRIBE message */
+/* Max number of topics one can subscribe to in a single SUBSCRIBE message */
 #define MSG_SUB_MAXNTOPICS 8 
 
 /* Control Command Types */
