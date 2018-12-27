@@ -3,7 +3,8 @@
 A small incomplete and undocumented MQTT 3.1.1 client library written in <500 lines of C99.
 The library uses no dynamic allocation and compiles down to ~1K on ARM thumb.
 
-Still a work in progress. Easy to hack on.
+NOTE: This is very much a work in progress still. But it should be easy to hack on.
+
 
 See [mqtt.h](https://github.com/kokke/tiny-MQTT-c/blob/master/mqtt.h) and [mqtt.c](https://github.com/kokke/tiny-MQTT-c/blob/master/mqtt.c) for the implementation of the MQTT protocol.
 
