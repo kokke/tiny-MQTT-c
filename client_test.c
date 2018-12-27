@@ -100,7 +100,6 @@ int main(int argc, char* argv[])
 
     if (is_subscriber && !subscribed && ((time(0) - c.last_active) >= 2))
     {
-//g(uint8_t* pu8dst, uint8_t* pu8topic, uint16_t u16topic_len, uint8_t u8qos, uint16_t u16msg_i
       nbytes = mqtt_encode_subscribe_msg((uint8_t*)buf2, (uint8_t*)"a/b", 3, 1, 12345);
       client_send(&c, buf2, nbytes);
       subscribed = 1;
@@ -121,7 +120,6 @@ int main(int argc, char* argv[])
 
     if ((time(0) > next_pub) && !is_subscriber)
     {
-//int mqtt_encode_publish_msg(uint8_t* pu8dst, uint8_t* pu8topic, uint16_t u16topic_len, uint8_t u8qos, uint16_t u16msg_id, uint8_t* pu8payload, uint32_t u32data_len);
       nbytes = mqtt_encode_publish_msg((uint8_t*)buf2, (uint8_t*)"a/b", 3, 1, 10, (uint8_t*)"hi mom!", 7);
       client_send(&c, buf2, nbytes);
       next_pub = time(0) + 10;
