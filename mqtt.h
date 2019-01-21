@@ -49,4 +49,6 @@ int mqtt_decode_pingresp_msg(uint8_t* pu8src, uint32_t u32nbytes);
 int mqtt_decode_puback_msg(uint8_t* pu8src, uint32_t u32nbytes, uint16_t* pu16msg_id);
 int mqtt_decode_suback_msg(uint8_t* pu8src, uint32_t u32nbytes, uint16_t* pu16msg_id_out);
 
+int mqtt_decode_msg(uint8_t* pu8src, uint8_t* pu8ctrl_type, uint8_t* pu8flgs, uint8_t* pu8data_out, uint32_t* pu32output_len);
+
 
