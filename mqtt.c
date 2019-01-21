@@ -72,7 +72,7 @@ static int mqtt_encode_msg(uint8_t* pu8dst, uint8_t u8ctrl_type, uint8_t u8flgs,
 }
 
 
-static int mqtt_decode_msg(uint8_t* pu8src, uint8_t* pu8ctrl_type, uint8_t* pu8flgs, uint8_t* pu8data_out, uint32_t* pu32output_len)
+int mqtt_decode_msg(uint8_t* pu8src, uint8_t* pu8ctrl_type, uint8_t* pu8flgs, uint8_t* pu8data_out, uint32_t* pu32output_len)
 {
   int nbytes_decoded = 0;
   if (    (pu8src != 0)
