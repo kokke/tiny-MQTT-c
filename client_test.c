@@ -34,21 +34,45 @@ static void lost_connection(client_t* psClnt)
   printf("CLNT%d: disconnected from server.\n", psClnt->sockfd);
 }
 
-static void got_data(client_t* psClnt, char* data, int nbytes)
+static void got_data(client_t* psClnt, unsigned char* data, int nbytes)
 {
   require(psClnt != 0);
 
-  printf("CLNT%d: got %d bytes, '", psClnt->sockfd, nbytes);
+  printf("CLNT%d: got %d bytes (", psClnt->sockfd, nbytes);
+
+  uint8_t ctrl = data[0] >> 4;
+  if (ctrl == CTRL_CONNACK)  { printf("CONNACK"); }
+  if (ctrl == CTRL_PINGRESP) { printf("PINGRESP"); }
+  if (ctrl == CTRL_PUBACK)   { printf("PUBACK"); }
+  if (ctrl == CTRL_SUBACK)   { printf("SUBACK"); }
+  if (ctrl == CTRL_PUBLISH)
+  {
+    printf("PUBLISH"); 
+//int mqtt_decode_publish_msg(uint8_t* pu8src, uint32_t u32nbytes, uint8_t* pu8qos, uint16_t* pu16msg_id_out, uint16_t* pu16topic_len, uint8_t** ppu8topic, uint8_t** ppu8payload);
+
+    uint8_t qos;
+    uint16_t msg_id;
+    uint16_t topic_len;
+    uint8_t* topic;
+    uint8_t* payload = 0;
+    if (mqtt_decode_publish_msg(data, nbytes, &qos, &msg_id, &topic_len, &topic, &payload))
+    {
+      int msg_len = (int)(nbytes-2)-(int)(data-payload);
+      printf(" topic='%.*s', msg='%.*s'", (int)topic_len, topic, msg_len, payload);
+    }
+  }
+  printf(") '");
   int i;
   for (i = 0; i < nbytes; ++i)
   {
-    if (data[i] == '\n')
+    uint8_t c = data[i];
+    if (c == '\n')
     {
       printf("\\n");
     }
     else
     {
-      printf("%c", data[i]);
+      printf("%c", (c < 32 || c > 126) ? '?' : c);
     }
   }
   printf("'\n");
